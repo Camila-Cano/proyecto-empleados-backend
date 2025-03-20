@@ -1,0 +1,20 @@
+server:
+  port: 8080
+  servlet:
+    context-path: "/proyecto-empleados"
+  spring:
+    data:
+      mongodb:
+        uri: "mongodb+srv://mongo:mongo@cluster-camila.mlli5.mongodb.net/admin?appName=cluster-camila&retryWrites=true&loadBalanced=false&replicaSet=atlas-vvutih-shard-0&readPreference=primary&srvServiceName=mongodb&connectTimeoutMS=10000&w=majority"
+        database: db_hba_team_bd
+    application:
+      name: "ProyectoEmpleados"
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "health"
+        base-path: "/actuator"
+      endpoint:
+        probes:
+          enabled: true
