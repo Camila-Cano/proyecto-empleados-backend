@@ -16,8 +16,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class EmpleadosService {
 
-    private EmpleadosRepository repository;
-    private EmpleadoMapper mapper;
+    private final EmpleadosRepository repository;
+    private final EmpleadoMapper mapper;
 
     public EmpleadoDto buscarEmpleado(String documentoIdentidad)  {
         Optional<EmpleadoEntity> optional = repository.findById(documentoIdentidad);

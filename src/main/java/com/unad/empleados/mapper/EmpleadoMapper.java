@@ -8,11 +8,27 @@ import org.springframework.stereotype.Component;
 public class EmpleadoMapper {
 
     public EmpleadoDto convertirDto(EmpleadoEntity entity) {
-        return new EmpleadoDto();
+        return EmpleadoDto.builder()
+                .foto(entity.getFoto())
+                .nombre(entity.getNombre())
+                .telefono(entity.getTelefono())
+                .codigo(entity.getCodigo())
+                .direccion(entity.getDireccion())
+                .documentoIdentidad(entity.getDocumentoIdentidad())
+                .apellido(entity.getApellido())
+                .build();
     }
 
     public EmpleadoEntity convertirEntidad(EmpleadoDto dto) {
-        return new EmpleadoEntity();
+        return EmpleadoEntity.builder()
+                .telefono(dto.getTelefono())
+                .apellido(dto.getApellido())
+                .codigo(dto.getCodigo())
+                .direccion(dto.getDireccion())
+                .documentoIdentidad(dto.getDocumentoIdentidad())
+                .foto(dto.getFoto())
+                .nombre(dto.getNombre())
+                .build();
     }
 
 }

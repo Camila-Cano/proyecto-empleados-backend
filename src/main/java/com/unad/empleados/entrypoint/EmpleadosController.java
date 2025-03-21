@@ -2,7 +2,7 @@ package com.unad.empleados.entrypoint;
 
 import com.unad.empleados.entrypoint.dto.EmpleadoDto;
 import com.unad.empleados.services.EmpleadosService;
-import lombok.extern.slf4j.Slf4j;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,10 +10,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping
-@Slf4j
+@RequiredArgsConstructor
 public class EmpleadosController {
 
-    private EmpleadosService service;
+    private final EmpleadosService service;
 
     @GetMapping("/{documentoIdentidad}")
     @ResponseStatus(HttpStatus.OK)
