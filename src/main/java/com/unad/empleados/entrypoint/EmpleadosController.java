@@ -2,6 +2,7 @@ package com.unad.empleados.entrypoint;
 
 import com.unad.empleados.entrypoint.dto.EmpleadoDto;
 import com.unad.empleados.services.EmpleadosService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,13 +24,13 @@ public class EmpleadosController {
 
     @PostMapping("/crear")
     @ResponseStatus(HttpStatus.CREATED)
-    public EmpleadoDto crearEmpleado(@RequestBody EmpleadoDto request)  {
+    public EmpleadoDto crearEmpleado(@RequestBody @Valid EmpleadoDto request)  {
         return service.crearEmpleado(request);
     }
 
     @PutMapping("/actualizar")
     @ResponseStatus(HttpStatus.OK)
-    public EmpleadoDto actualizarEmpleado(@RequestBody EmpleadoDto request)  {
+    public EmpleadoDto actualizarEmpleado(@RequestBody @Valid EmpleadoDto request)  {
         return service.actualizarEmpleado(request);
     }
 
