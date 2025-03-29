@@ -4,6 +4,7 @@
 
 # Build
 - Crear una carpeta vacía y en una consola de comandos ejecutar los siguientes pasos
-- git clone https://github.com/Camila-Cano/proyecto-empleados-backend 
+- git clone https://github.com/Camila-Cano/proyecto-empleados-backend
+- cd proyecto-empleados-backend
 - gradlew build -x test
 - gradlew bootRun
