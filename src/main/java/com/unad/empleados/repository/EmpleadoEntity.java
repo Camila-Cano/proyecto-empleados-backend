@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.time.LocalDateTime;
+
 @Document(collection = "empleados")
 @Getter
 @Builder
@@ -27,6 +29,6 @@ public class EmpleadoEntity {
     private String direccion;
     @Field("telefono")
     private String telefono;
-    @Field("foto")
-    private String foto;
+    @Field("fechaNacimiento")
+    private LocalDateTime fechaNacimiento;
 }

@@ -9,7 +9,7 @@ public class EmpleadoMapper {
 
     public EmpleadoDto convertirDto(EmpleadoEntity entity) {
         return EmpleadoDto.builder()
-                .foto(entity.getFoto())
+                .fechaNacimiento(entity.getFechaNacimiento())
                 .nombre(entity.getNombre())
                 .telefono(entity.getTelefono())
                 .codigo(entity.getCodigo())
@@ -26,7 +26,7 @@ public class EmpleadoMapper {
                 .codigo(dto.getCodigo())
                 .direccion(dto.getDireccion())
                 .documentoIdentidad(dto.getDocumentoIdentidad())
-                .foto(dto.getFoto())
+                .fechaNacimiento(dto.getFechaNacimiento())
                 .nombre(dto.getNombre())
                 .build();
     }

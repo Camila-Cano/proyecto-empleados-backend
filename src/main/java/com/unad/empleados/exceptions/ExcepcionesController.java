@@ -8,9 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.support.WebExchangeBindException;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
@@ -33,13 +31,20 @@ public class ExcepcionesController {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String,String>> handleBadRequest(MethodArgumentNotValidException ex) {
         log.info(ex.getMessage());
-        Map<String, String> errors = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
         ex.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
+            sb.append(String.format("%s:%s%n", fieldName, errorMessage));
         });
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(Map.of("message", sb.toString()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String,String>> handleException(EmpleadoExistenteException ex) {
+        log.info(ex.getMessage());
+        String msg = "Lo sentimos ocurrio un error inesperado";
+        return new ResponseEntity<>(Map.of("message", msg), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

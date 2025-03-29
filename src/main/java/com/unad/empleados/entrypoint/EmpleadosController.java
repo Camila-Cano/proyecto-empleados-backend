@@ -12,6 +12,7 @@ import java.util.Map;
 @RestController
 @RequestMapping
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class EmpleadosController {
 
     private final EmpleadosService service;
