@@ -1,5 +1,6 @@
 package com.unad.empleados.entrypoint.dto;
 
+import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
@@ -28,10 +29,10 @@ public class EmpleadoDto {
     private String documentoIdentidad;
     @Size(max = 100)
     private String direccion;
-    @Pattern(regexp = "^\\d{10}$",  message = "Debe ser numerico y minimo de 7 digitos")
+    @Pattern(regexp = "^\\d{10}$",  message = "Debe ser numerico y de 10 digitos")
     private String telefono;
     @Past
-    @NotNull
+    @Nullable
     private LocalDateTime fechaNacimiento;
 
 }
